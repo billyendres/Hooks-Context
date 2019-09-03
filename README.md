@@ -10,6 +10,10 @@ Destructure all props rather than run props.example
 
 ### Originally in App.js. Functions added to types file in context folder.
 
+### Users.js uses githubContext provider to supply state, destructures as compared to Search.js eg ' githubContext.searchUsers(text);
+
+'
+
 ```javascript
 const App = () => {
   const [users, setUsers] = useState([]);

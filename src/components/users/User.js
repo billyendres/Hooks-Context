@@ -1,14 +1,20 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useContext } from "react";
+import GithubContext from "../../context/github/githubContext";
+
 import { Link } from "react-router-dom";
 import Spinner from "../layout/Spinner";
 import Repos from "../repos/Repos";
 
 //USEEFFECT REPLACES LIFECYCLE METHODS
-const User = ({ loading, repos, user, getUser, getUserRepo, match }) => {
+const User = ({ match }) => {
+  const githubContext = useContext(GithubContext);
+  const { user, loading, getUser, getUserRepo, repos } = githubContext;
+
   useEffect(() => {
     getUser(match.params.login);
     getUserRepo(match.params.login);
-  }, [getUser, getUserRepo, match.params.login]);
+    // eslint-disable-next-line
+  }, []);
 
   const {
     name,
